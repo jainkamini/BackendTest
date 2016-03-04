@@ -1,0 +1,132 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/AC8JQPO_FEW3I5YRSJcbe6C1mSk\"",
+ "discoveryVersion": "v1",
+ "id": "employeeApi:v1",
+ "name": "employeeApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "backend.myapplication.Kamini.example.com",
+ "ownerName": "backend.myapplication.Kamini.example.com",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://celtic-maxim-123918.appspot.com/_ah/api/employeeApi/v1/",
+ "basePath": "/_ah/api/employeeApi/v1/",
+ "rootUrl": "https://celtic-maxim-123918.appspot.com/_ah/api/",
+ "servicePath": "employeeApi/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Employee": {
+   "id": "Employee",
+   "type": "object",
+   "properties": {
+    "designation": {
+     "type": "string"
+    },
+    "id": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "name": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getEmployee": {
+   "id": "employeeApi.getEmployee",
+   "path": "employee/{id}",
+   "httpMethod": "GET",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "response": {
+    "$ref": "Employee"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "insertEmployee": {
+   "id": "employeeApi.insertEmployee",
+   "path": "employee",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "Employee",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Employee"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
