@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.io.IOException;
 
 public class MainActivity extends Activity {
 
+    private String LOG_TAG=MainActivity.class.getSimpleName();
 
     TextView tv;
     @Override
@@ -27,8 +29,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv=  (TextView)findViewById(R.id.txthello);
-        String what="Heloo";
-        String who="me";
+        String what="good";
+        String who="ram";
                 String[]args={what,who};
        // new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfredhjghgjhgjhgjhgjhgjhgjhgjgj"));
         new EndpointsAsyncTask().execute(args);
@@ -50,7 +52,7 @@ public class MainActivity extends Activity {
                         // - 10.0.2.2 is localhost's IP address in Android emulator
                         // - turn off compression when running against local devappserver
                        // .setRootUrl("http://10.0.2.2:8080/_ah/api/")
-                        .setRootUrl("http:/celtic-maxim-123918.appspot.com/_ah/api/explorer")
+                        .setRootUrl("http://celtic-maxim-123918.appspot.com/_ah/api/")
                         .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                             @Override
                             public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
@@ -71,6 +73,7 @@ public class MainActivity extends Activity {
                 Quote quote1=   quoteApiService.insert(quote).execute();
                 return quote1.getWhat();
             } catch (IOException e) {
+                Log.e(LOG_TAG,e.getMessage());
                 return e.getMessage();
             }
         }
